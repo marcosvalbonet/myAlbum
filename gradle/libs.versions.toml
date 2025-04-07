@@ -26,7 +26,6 @@ turbine = "1.0.0"
 coreKtxVersion = "1.6.1"
 mockito = "5.2.0"
 mockitoKotlin = "4.1.0"
-roomKtx = "2.6.1"
 
 
 [libraries]
@@ -53,9 +52,9 @@ coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 google-gson = { group = "com.google.code.gson", name="gson", version.ref = "gson" }
 retrofit = { group = "com.squareup.retrofit2", name="retrofit", version.ref = "retrofit" }
 retrofit-gson = { group = "com.squareup.retrofit2", name="converter-gson", version.ref = "retrofit" }
-room = { group = "androidx.room:room-runtime", name="room", version.ref = "room" }
-room-compiler = { group = "androidx.room:room-compiler", name="room", version.ref = "room" }
-room-ktx = { group = "androidx.room:room-ktx", name="room", version.ref = "room" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 logginginterceptor = { group = "com.squareup.okhttp3", name="logging-interceptor", version.ref = "retrofitOkhttp" }
 mockwebserver = { group = "com.squareup.okhttp3", name="logging-interceptor", version.ref = "retrofitOkhttp" }
 
@@ -66,7 +65,6 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "coreKtxVersion" }
 mockito = { module = "org.mockito:mockito-android", version.ref = "mockito"}
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin"}
-androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

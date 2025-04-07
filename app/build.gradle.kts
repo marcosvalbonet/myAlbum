@@ -67,7 +67,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.core.ktx)
-    implementation(libs.androidx.room.ktx)
 
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
@@ -92,7 +91,7 @@ dependencies {
     implementation(libs.mockwebserver)
 
     // Room
-    implementation(libs.room)
+    implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     //ksp("androidx.room:room-compiler:2.6.1")
     kapt(libs.room.compiler)

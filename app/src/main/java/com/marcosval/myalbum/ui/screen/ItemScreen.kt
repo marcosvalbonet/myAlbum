@@ -13,12 +13,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.ImageLoader
 import coil.compose.rememberAsyncImagePainter
+import coil.request.CachePolicy
 import com.marcosval.myalbum.ui.viewmodel.ItemUiState
 import com.marcosval.myalbum.ui.viewmodel.ItemViewModel
 import okhttp3.OkHttpClient
 
 @Composable
-fun ItemScreen(viewModel: ItemViewModel = hiltViewModel()) {
+fun     ItemScreen(viewModel: ItemViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(Unit) { viewModel.fetchItems() }
@@ -41,14 +42,19 @@ fun ItemScreen(viewModel: ItemViewModel = hiltViewModel()) {
                             .fillMaxWidth()
                             .padding(8.dp),
                     ) {
-                        Column(Modifier.padding(16.dp)) {
+                        Row(
+                            modifier = Modifier.padding(16.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
                             Image(
-                                painter = rememberAsyncImagePainter(item.imageUrl, getImageLoader()),
+                                painter = rememberAsyncImagePainter(item.thumbnailUrl, getImageLoader()),
                                 contentDescription = item.title,
-                                modifier = Modifier.height(150.dp)
+                                modifier = Modifier.height(50.dp)
                             )
-                            Text(text = item.title, style = MaterialTheme.typography.titleLarge)
-                            Text(text = "$${item.price}", style = MaterialTheme.typography.titleMedium)
+                            Spacer(modifier = Modifier.width(16.dp))
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(text = item.title, style = MaterialTheme.typography.titleLarge)
+                            }
                         }
                     }
                 }
@@ -67,11 +73,13 @@ fun getImageLoader() = ImageLoader.Builder(LocalContext.current)
             OkHttpClient.Builder()
                 .addInterceptor { chain ->
                     val request = chain.request().newBuilder()
-                        .header("User-Agent", "MyCustomUserAgent/1.0")
+                        .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
                         .build()
                     chain.proceed(request)
                 }
                 .build()
         }
-        .build()
+    .respectCacheHeaders(false) // Opcional: para forzar el uso de la caché
+    .diskCachePolicy(CachePolicy.ENABLED) // Opcional: para habilitar la caché en disco
+    .build()
 

@@ -30,7 +30,7 @@ fun Item.toEntity() = ItemEntity(
     id,
     title = title ?: "",
     description = description ?: "",
-    price = price ?: 0.0,
-    imageUrl = imageUrl ?: ""
+    url = url ?: "",
+    thumbnailUrl = thumbnailUrl ?: ""
 )
-fun ItemEntity.toDomain() = Item(id, title, description, price, imageUrl)
+fun ItemEntity.toDomain() = Item(id, title, description, url, thumbnailUrl)

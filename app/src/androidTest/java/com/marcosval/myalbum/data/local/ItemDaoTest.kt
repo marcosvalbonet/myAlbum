@@ -31,7 +31,7 @@ class ItemDaoTest {
 
     @Test
     fun insertAndRetrieveItems() = runTest {
-        val item = ItemEntity(1, "Item 1", "Desc", 10.0, "url")
+        val item = ItemEntity(1, "Item 1", "Desc", "url", thumbnailUrl = "thumbnail")
         itemDao.insertAll(listOf(item))
 
         val result = itemDao.getAllItems().first()

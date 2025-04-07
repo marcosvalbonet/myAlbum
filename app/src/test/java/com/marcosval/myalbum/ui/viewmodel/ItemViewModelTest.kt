@@ -41,7 +41,7 @@ class ItemViewModelTest {
 
     @Test
     fun `fetch items successfully updates UI state`() = runTest {
-        val mockItems = listOf(Item(1, "Item 1", "Desc", 10.0, "url"))
+        val mockItems = listOf(Item(1, "Item 1", "Desc", "url", thumbnailUrl = "thumbnail"))
 
         coEvery { getItemsUseCase.invoke() } returns mockItems
 

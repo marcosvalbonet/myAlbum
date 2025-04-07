@@ -30,7 +30,7 @@ class ItemRepositoryImplTest {
 
     @Test
     fun fetchItemsFromApiAndSaveToRoom() = runTest {
-        val mockItemsDto = listOf(Item(1, "Item 1", "Desc", 10.0, "url"))
+        val mockItemsDto = listOf(Item(1, "Item 1", "Desc", "url", thumbnailUrl = "thumbnail"))
         val mockEntities = mockItemsDto.map { it.toEntity() }
         val mockDomainItems = mockItemsDto.map { it }
 
@@ -44,7 +44,7 @@ class ItemRepositoryImplTest {
 
     @Test
     fun fetchItemsFromRoomWhenApiFails() = runTest {
-        val mockEntities = listOf(ItemEntity(1, "Item 1", "Desc", 10.0, "url"))
+        val mockEntities = listOf(ItemEntity(1, "Item 1", "Desc", "url", thumbnailUrl = "thumbnail"))
         val mockDomainItems = mockEntities.map { it.toDomain() }
 
         whenever(apiService.getItems()).thenThrow(RuntimeException("API Error"))

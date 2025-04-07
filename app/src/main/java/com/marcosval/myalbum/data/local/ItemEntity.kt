@@ -8,6 +8,6 @@ data class ItemEntity(
     @PrimaryKey val id: Int,
     val title: String,
     val description: String = "",
-    val price: Double,
-    val imageUrl: String
+    val url: String,
+    val thumbnailUrl: String
 )
